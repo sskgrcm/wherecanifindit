@@ -5,9 +5,9 @@ module.exports = (passport, user) => {
     const auth = require('./auth');
 
     passport.use(new FacebookStrategy({
-        clientID: auth.facebook.APP_ID,
-        clientSecret: auth.facebook.APP_SECRET,
-        callbackURL: auth.facebook.CALLBACK_URL,
+        clientID: process.env.FACEBOOK_APP_ID,
+        clientSecret: process.env.FACEBOOK_APP_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL,
         profileFields: auth.facebook.FIELDS,
         },
         (accessToken, refreshToken, profile, done) => {
