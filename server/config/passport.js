@@ -11,7 +11,7 @@ module.exports = (passport, user) => {
         profileFields: auth.facebook.FIELDS,
         },
         (accessToken, refreshToken, profile, done) => {
-            models.user.findOrCreate({
+            models.User.findOrCreate({
                 where: {
                     facebook_id: profile.id,
                 },
