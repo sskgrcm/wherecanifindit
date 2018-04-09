@@ -8,7 +8,7 @@ const flash = require('express-flash');
 const override = require('method-override');
 const http = require('http');
 const app = express();
-require('consolidate');
+const engines = require('consolidate');
 
 app.use(logger('dev'));
 // Body parser
@@ -35,10 +35,10 @@ app.set('view engine', 'ejs');
 // const models = require('./server/models');
 
 // Routes
-require('./server/routes/index')
-const user = require('./server/routes/user.js')
+require('./server/routes/index.js')(app, passport)
 
-app.use('/user', user)
+// Passport strategies
+require('./server/config/passport.js')(passport)
 
 app.get('*', (req, res) => res.status(404).send({
     message: 'Page not found...',

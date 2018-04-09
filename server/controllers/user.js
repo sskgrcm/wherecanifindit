@@ -12,6 +12,13 @@ module.exports = {
     },
     getProfile(req, res) {
         const user = models.user.findOne({where: {id: req.user.id}});
-        res.render('profile', {user});
+        res.status(200).render('profile', {user});
+    },
+    getLogin(req, res) {
+        if (req.isAuthenticated()) {
+            res.redirect('home');
+        } else {
+            res.status(200).render('login');
+        }
     },
 };

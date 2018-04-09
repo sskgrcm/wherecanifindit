@@ -1,0 +1,10 @@
+body {
+    text-align: center;
+}
+
+.vertical-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
