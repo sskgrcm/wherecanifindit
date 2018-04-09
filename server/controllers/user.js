@@ -16,7 +16,7 @@ module.exports = {
     },
     getLogin(req, res) {
         if (req.isAuthenticated()) {
-            res.redirect('home');
+            res.redirect('shows');
         } else {
             res.status(200).render('login');
         }

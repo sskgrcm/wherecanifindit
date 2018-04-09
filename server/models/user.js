@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         name: DataTypes.STRING,
         facebook_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         picture_link: {
@@ -10,4 +10,4 @@ module.exports = (sequelize, DataTypes) => {
         },
     });
     return User;
-  };
+};
