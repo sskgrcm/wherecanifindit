@@ -1,7 +1,13 @@
+const models = require('../models');
 
 module.exports = {
-    getHome(req, res) {
+    async getHome(req, res) {
         // Get shows
-        res.status(200).render('home');
+        const shows = await models.Show.findAll({
+            where: {
+                provider: 'Netflix',
+            },
+        });
+        res.status(200).render('home', {shows});
     },
 };

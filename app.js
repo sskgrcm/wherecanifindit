@@ -36,31 +36,30 @@ app.set('view engine', 'ejs');
 // const models = require('./server/models');
 
 // Routes
-require('./server/routes/index.js')(app, passport)
+require('./server/routes/index.js')(app, passport);
 
 // Passport strategies
-require('./server/config/passport.js')(passport)
+require('./server/config/passport.js')(passport);
 
 app.get('*', (req, res) => res.status(404).send({
     message: 'Page not found...',
 }));
 
-var options = {
+const options = {
     key: fs.readFileSync('./key.pem'),
     cert: fs.readFileSync('./cert.pem'),
     requestCert: false,
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
 };
 const models = require('./server/models');
-models.sequelize.sync().then(function(){
-    console.log('Nice! Database looks fine')
-  
-    }).catch(function(err){
-    console.log(err,"Something went wrong with the Database Update!")
+models.sequelize.sync().then(function() {
+    console.log('Nice! Database looks fine');
+    }).catch(function(err) {
+        console.log(err, 'Something went wrong with the Database Update!');
     });
 const port = process.env.PORT || 8081;
-const server = https.createServer(options, app).listen(port, () => {
-    console.log('server running at ' + port)
+https.createServer(options, app).listen(port, () => {
+    console.log('server running at ' + port);
 });
 
 
