@@ -12,7 +12,12 @@
         <div class="container flex">
             <% if (locals.shows) { %>
                 <% shows.forEach(show => { %>
-                    <a><img class="card mr-auto" src="<%=show.picture_link%>"></a>
+                    <% if (show.provider == 'Netflix') { %>
+                        <a><img class="card mr-auto" src="<%=show.picture_link%>"></a>
+                    <% } %>
+                    <% if (show.provider == 'HBO') { %>
+                        <a><%=show.title%></a>                        
+                    <% } %>
                 <% }) %>
             <% } %>
         </div>

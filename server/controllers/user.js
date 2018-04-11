@@ -7,7 +7,7 @@ module.exports = {
         if (req.isAuthenticated()) {
             return next();
         } else {
-            res.redirect('login');
+            res.redirect('/login');
         }
     },
     getProfile(req, res) {
@@ -16,7 +16,7 @@ module.exports = {
     },
     getLogin(req, res) {
         if (req.isAuthenticated()) {
-            res.redirect('shows');
+            res.redirect('/shows/');
         } else {
             res.status(200).render('login');
         }

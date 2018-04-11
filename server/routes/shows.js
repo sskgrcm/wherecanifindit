@@ -8,5 +8,6 @@ const userController = require('../controllers/user');
 router.get('/',
     userController.ensureAuthenticated,
     showsController.getHome);
-
+router.post('/', userController.ensureAuthenticated,
+    showsController.search);
 module.exports = router;
